@@ -1,0 +1,63 @@
+{
+  "nodes": {
+    "libopenshot-audio-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630797881,
+        "narHash": "sha256-XtwTZsj/L/sw/28E7Qr5UyghGlBFFXvbmZLGXBB8vg0=",
+        "owner": "openshot",
+        "repo": "libopenshot-audio",
+        "rev": "d588dbd6057f71c987dc6d8448322aa6b6e86f1a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "openshot",
+        "ref": "v0.2.2",
+        "repo": "libopenshot-audio",
+        "type": "github"
+      }
+    },
+    "libopenshot-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630795836,
+        "narHash": "sha256-aF8wrPxFIjCy5gw72e/WyL/Wcx9tUGDkrqHS+ZDVK0U=",
+        "owner": "openshot",
+        "repo": "libopenshot",
+        "rev": "59878784732fa399c47ac5d282bfc9dfe470d0dc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "openshot",
+        "ref": "v0.2.7",
+        "repo": "libopenshot",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1632411313,
+        "narHash": "sha256-lekODc44lVo9/0EwGiX6LoEt2KhiPdcfNopealMJ7n4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "51bcdc4cdaac48535dabf0ad4642a66774c609ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "libopenshot-audio-source": "libopenshot-audio-source",
+        "libopenshot-source": "libopenshot-source",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
