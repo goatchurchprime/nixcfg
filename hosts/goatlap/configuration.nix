@@ -55,15 +55,28 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.layout = "gb";
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ gutenprint hplip ];
+  };
 
+  # Enable the avahi daemon for mDNS, this also allows printer discovery.
+  services.avahi = {
+    nssmdns = true; # Allows software to use Avahi to resolve.
+    enable = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      workstation = true;
+    };
+  };
+  
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
