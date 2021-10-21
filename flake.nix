@@ -22,8 +22,8 @@
       forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
 
       # Nixpkgs instantiated for supported system types.
-      nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; overlays = [ self.overlay ]; });
-      nixpkgsUnstableFor = forAllSystems (system: import nixpkgsUnstable { inherit system; overlays = [ self.overlay ]; });
+      nixpkgsFor = forAllSystems (system: import nixpkgs { allowUnfree = true; inherit system; overlays = [ self.overlay ]; });
+      nixpkgsUnstableFor = forAllSystems (system: import nixpkgsUnstable { allowUnfree = true; inherit system; overlays = [ self.overlay ]; });
 
     in
     {
