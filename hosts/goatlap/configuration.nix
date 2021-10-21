@@ -15,6 +15,7 @@
 
   imports =
     [ # Include the results of the hardware scan.
+      ../../mixins/common.nix
       ./hardware-configuration.nix
     ];
   
