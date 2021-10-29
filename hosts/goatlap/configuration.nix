@@ -57,6 +57,9 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # @hsngrmpf's advice for running podman
+  virtualisation.podman.enable = true;
+
   # Configure keymap in X11
   services.xserver.layout = "gb";
   # services.xserver.xkbOptions = "eurosign:e";
@@ -109,6 +112,12 @@
     vscodium
     gnumake
     my-godot
+    picocom
+    mosquitto
+    librecad
+    gimp
+    usbutils
+    geany
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
