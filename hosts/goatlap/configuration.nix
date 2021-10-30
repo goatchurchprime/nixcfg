@@ -91,7 +91,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "adbusers" "dialout" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
       # dave
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDuhpzDHBPvn8nv8RH1MRomDOaXyP4GziQm7r3MZ1Syk grmpf@grmpf-ThinkPad-T460p"
