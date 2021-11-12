@@ -9,8 +9,11 @@ endif
 switch:
 	sudo nixos-rebuild switch --flake .#${HOSTNAME} -L
 
+test:
+	sudo nixos-rebuild test --flake .#${HOSTNAME} -L
+
 update:
-	sudo nix flake update --commit-lock-file
+	nix flake update --commit-lock-file
 
 upgrade:
 	make update && make switch
