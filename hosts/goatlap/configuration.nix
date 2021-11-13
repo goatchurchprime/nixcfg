@@ -118,6 +118,9 @@
     gimp
     usbutils
     geany
+    libreoffice
+    tdesktop
+    xorg.xkill
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
