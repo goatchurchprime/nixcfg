@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/f6551e1efa261568c82b76c3a582b2c2ceb1f53f";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
     godot-source = {
-      url = "github:godotengine/godot/3.3.3-stable";
+      url = "github:godotengine/godot/3.4-stable";
       flake = false;
     };
   };
