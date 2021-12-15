@@ -67,7 +67,7 @@
         in
           pkgs.mkShell {
             buildInputs = with pkgs.python39Packages; [
-              jupyter scipy matplotlib pandas matplotlib sympy ezdxf jupyter_micropython_kernel pyserial websocket_client
+              jupyter scipy matplotlib pandas matplotlib sympy ezdxf jupyter_micropython_kernel pyserial websocket_client pyproj
             ];
             shellHook = "python -m jupyter_micropython_kernel.install";
           }
