@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, ... }@inputs:
     let
       # Generate a user-friendly version numer.
       version = builtins.substring 0 8 self.lastModifiedDate;
@@ -25,6 +26,8 @@
         goatlap = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
           modules = [
+            nixos-hardware.nixosModules.common-pc-laptop-ssd
+            nixos-hardware.nixosModules.common-cpu-intel
             (import ./hosts/goatlap/configuration.nix)
           ];
           specialArgs = {
