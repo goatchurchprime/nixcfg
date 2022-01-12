@@ -13,6 +13,10 @@
       '';
     };
 
+  nix.binaryCachePublicKeys = [ "tunnelvr.cachix.org-1:IZUIF+ytsd6o+5F0wi45s83mHI+aQaFSoHJ3zHrc2G0=" ];
+  nix.binaryCaches = [ "https://tunnelvr.cachix.org" ];
+  nix.trustedBinaryCaches = [ "https://tunnelvr.cachix.org" ];
+
   imports =
     [ # Include the results of the hardware scan.
       ../../mixins/common.nix
