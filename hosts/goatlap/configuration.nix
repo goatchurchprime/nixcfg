@@ -115,7 +115,7 @@
     htop
     vscodium
     gnumake
-    my-godot
+    godot
     picocom
     mosquitto
     librecad

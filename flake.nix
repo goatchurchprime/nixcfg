@@ -3,14 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/f6551e1efa261568c82b76c3a582b2c2ceb1f53f";
-    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    godot-source = {
-      url = "github:godotengine/godot/3.4-stable";
-      flake = false;
-    };
   };
 
-  outputs = { self, nixpkgs, nixpkgsUnstable, godot-source, ... }@inputs: 
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       # Generate a user-friendly version numer.
       version = builtins.substring 0 8 self.lastModifiedDate;
@@ -23,8 +18,6 @@
 
       # Nixpkgs instantiated for supported system types.
       nixpkgsFor = forAllSystems (system: import nixpkgs { allowUnfree = true; inherit system; overlays = [ self.overlay ]; });
-      nixpkgsUnstableFor = forAllSystems (system: import nixpkgsUnstable { allowUnfree = true; inherit system; overlays = [ self.overlay ]; });
-
     in
     {
       nixosConfigurations = rec {
@@ -41,17 +34,7 @@
         };
       };
 
-      overlay = final: prev:
-        let 
-          inherit (final) stdenv lib fetchFromGitHub godot godot-headless godot-export-templates fetchurl runCommandNoCC unzip;
-        in
-        {
-          my-godot = nixpkgsUnstableFor."${final.hostPlatform .system}".godot.overrideAttrs (oldAttrs: rec {
-            version = godot-source.rev;
-            src = godot-source;
-          });
-        };
-
+      overlay = final: prev: {};
     };
 }
 
