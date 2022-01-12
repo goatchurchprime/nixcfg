@@ -25,6 +25,20 @@
         python39Packages = final.python39.pkgs;
         python39 = prev.python39.override {
           packageOverrides = self: super: {
+            pygmsh = ((builtins.getFlake "github:wulfsta/nixpkgs/21826b8842db544daf94232acf5b4491b97b776e").legacyPackages.x86_64-linux.python39Packages.pygmsh.override {
+              exdown = self.exdown;
+              meshio = self.meshio;
+              numpy = self.numpy;
+              pytest = self.pytest;
+              importlib-metadata = self.importlib-metadata;
+            }).overrideAttrs (_: {
+              installCheckPhase = ":";
+              src = super.fetchPypi {
+                pname = "pygmsh";
+                version = "7.1.14";
+                sha256 = "sha256-oSJbN7LGJTc4s/gfdhgVX6CBMqdIk7K5tQKWwDE7MgY=";
+              };
+            });
             jupyter_micropython_kernel = super.buildPythonPackage rec {
               pname = "jupyter_micropython_kernel";
               version = "0.1.3.2";
@@ -67,9 +81,12 @@
         in
           pkgs.mkShell {
             buildInputs = with pkgs.python39Packages; [
-              jupyter scipy matplotlib pandas matplotlib sympy ezdxf jupyter_micropython_kernel pyserial websocket_client pyproj
+              jupyter pkgs.freecad pygmsh scipy matplotlib pandas matplotlib sympy ezdxf jupyter_micropython_kernel pyserial websocket_client pyproj ipympl ipywidgets
             ];
-            shellHook = "python -m jupyter_micropython_kernel.install";
+            shellHook = ''
+              python -m jupyter_micropython_kernel.install
+              jupyter nbextension enable --py widgetsnbextension --user
+            '';
           }
       );
 
