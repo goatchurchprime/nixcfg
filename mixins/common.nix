@@ -9,5 +9,6 @@
       '';
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    trustedUsers = [ "@wheel" "root" "julian" ];
   };
 }
