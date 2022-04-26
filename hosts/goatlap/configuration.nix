@@ -117,7 +117,6 @@
     chromium
     git
     htop
-    vscodium
     gnumake
     godot
     picocom
