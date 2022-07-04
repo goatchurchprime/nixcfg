@@ -28,6 +28,7 @@
   programs.ssh.knownHosts."100.107.23.115".hostNames = [ "100.107.23.115" ];
   
   programs.adb.enable = true;
+  fonts.fonts = [ pkgs.xorg.fontmiscmisc ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -117,6 +118,7 @@
     chromium
     git
     htop
+    btop
     gnumake
     godot
     picocom
