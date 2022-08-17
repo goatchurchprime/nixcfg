@@ -120,7 +120,6 @@
     htop
     btop
     gnumake
-    godot
     picocom
     mosquitto
     librecad
@@ -131,6 +130,9 @@
     tdesktop
     xorg.xkill
     docker-compose
+    magic-wormhole
+    vlc
+    jre8
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -12,8 +12,8 @@ switch:
 test:
 	sudo nixos-rebuild test --flake .#${HOSTNAME} -L
 
-update:
-	nix flake update --commit-lock-file
+update-nixpkgs:
+	nix flake lock --update-input nixpkgs --commit-lock-file
 
 upgrade:
-	make update && make switch
+	make update-nixpkgs && make switch
