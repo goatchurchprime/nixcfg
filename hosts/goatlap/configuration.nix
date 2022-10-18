@@ -133,6 +133,8 @@
     magic-wormhole
     vlc
     jre8
+    gnome.gedit
+    blender
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
