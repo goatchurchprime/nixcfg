@@ -135,6 +135,7 @@
     jre8
     gnome.gedit
     blender
+    cloudcompare
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
