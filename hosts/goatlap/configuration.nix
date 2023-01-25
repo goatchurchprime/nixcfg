@@ -21,6 +21,9 @@
     [ # Include the results of the hardware scan.
       ../../mixins/common.nix
       ./hardware-configuration.nix
+      ./hardware-specific.nix
+      ./users.nix
+      ./disks.nix
     ];
 
   services.tailscale.enable = true;
@@ -44,8 +47,6 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp3s0f1.useDHCP = true;
-  networking.interfaces.wlp2s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -96,18 +97,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.julian = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "adbusers" "dialout" "docker" ]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = [
-      # dave
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDuhpzDHBPvn8nv8RH1MRomDOaXyP4GziQm7r3MZ1Syk grmpf@grmpf-ThinkPad-T460p"
-      # matt
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQClm+SMN9Bg1HZ+MjH1VQYEXAnslGWT9564pj/KGO79WMQLUxdp3WWa1hQadf2PleAIEFEul3knrpRSEK3yHcCk3g+sCh3XIJcFZLesswe0V+kCAw+JBSd18ESJ4Qko+iDK95cDzucLFwXB10FMVKQCrX90KR+Fp6s6eJHcZGmpxTPgNulDpAjM2APluM3xBCe6zZzt+iNIzn3J8PRKbpNNbuw/LMRU8+udrGbLavUMcSk7ER9pAyLGhz//9aHWDPu7ZRje+vTWgnGFpzbtEzdjnP+2v45nLKWG7o7WdTAsAR8WSccjtNoBiVgSmpHr07zJ0/gTeL4PUkk3lbtzF/PdtTQGm3Ng4SjOBlhRVaTuKBlF2X/Rwq+W4LCbHVgA79MyhJxL2TDbKBPUSLfckqxP89e8Q7iQ4XjIHqVb50ojNNLGcOQRrHq14Twwx/ZDDQvMXCsLwM6vyoYa8KdSaASEr1clx78qNp9PHGlr+UztW+EsoZI7j1tzcHMmq2BSK90= matthew@t480"
-    ];
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
