@@ -4,11 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/83009edccc2e24afe3d0165ed98b60ff7471a5f8";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, ... }@inputs:
     let
       # Generate a user-friendly version numer.
       version = builtins.substring 0 8 self.lastModifiedDate;
@@ -31,13 +29,6 @@
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
             (import ./hosts/goatlap/configuration.nix)
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.julian = import ./hosts/goatlap/home-manager.nix;
-              nixpkgs.pkgs = nixpkgsFor.x86_64-linux;
-            }
           ];
           specialArgs = {
             inherit inputs;
