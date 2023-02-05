@@ -26,8 +26,7 @@
         goatlap = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
           modules = [
-            nixos-hardware.nixosModules.common-pc-laptop-ssd
-            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.framework
             (import ./hosts/goatlap/configuration.nix)
           ];
           specialArgs = {
