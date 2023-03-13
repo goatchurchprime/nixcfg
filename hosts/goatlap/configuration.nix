@@ -37,6 +37,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "goatlap"; # Define your hostname.
+
+  # This service is flakey and not reliable, disabling it is best for now.
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
