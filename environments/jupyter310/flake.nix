@@ -53,6 +53,21 @@
               doCheck = false;
               propagatedBuildInputs = [ self.numpy self.laszip ];
             };
+            
+            svgpathtools = super.buildPythonPackage rec {
+              pname = "svgpathtools";
+              version = "1.6.0";
+              format = "setuptools";
+              src = super.pkgs.fetchFromGitHub {
+                owner = "mathandy";
+                repo = pname;
+                rev = "v${version}";
+                sha256 = "sha256-Gu41GPMn1lIlz1a/SGQLhiih+agmeoRhCF1MDowf9Tw=";
+              };
+              doCheck = false;
+              propagatedBuildInputs = [ self.numpy self.scipy self.svgwrite ];                
+            };
+
           };
         };
       };
@@ -65,7 +80,7 @@
             buildInputs = with pkgs.python310Packages; [
               jupyter svglib ezdxf
               scipy matplotlib pandas matplotlib sympy 
-              pyserial laspy
+              pyserial svgwrite svgpathtools
               websocket_client pyproj ipympl ipywidgets seaborn influxdb
             ];
           }
