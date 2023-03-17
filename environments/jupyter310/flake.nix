@@ -44,15 +44,25 @@
             laspy = super.buildPythonPackage rec {
               pname = "laspy";
               version = "2.3.0";
-              src = super.pkgs.fetchFromGitHub {
-                owner = "tmontaigu";
-                repo = pname;
-                rev = "v${version}";
-                sha256 = "sha256-Wdbp6kjuZkJh+pp9OVczdsRNgn41/Tdt7nGFvewcQ1w";
+              src = super.pkgs.fetchPypi {
+                inherit pname version;
+                sha256 = "sha256-Wdbp6kjuZkJh+pp9OVczdsRNgn41/Tdt7nGFvewcQ1w=";
               };
               doCheck = false;
               propagatedBuildInputs = [ self.numpy self.laszip ];
             };
+
+            svgpathtools = super.buildPythonPackage rec {
+              pname = "svgpathtools";
+              version = "1.6.0";
+              src = super.pkgs.fetchPypi {
+                inherit pname version;
+                sha256 = "sha256-wLk07tKayusJmIr7TRXFmENmhHI24huAwHnY7bWsDE4=";
+              };
+              doCheck = false;
+              propagatedBuildInputs = [ self.numpy self.scipy self.svgwrite ];
+            };
+
           };
         };
       };
@@ -65,8 +75,9 @@
             buildInputs = with pkgs.python310Packages; [
               jupyter svglib ezdxf
               scipy matplotlib pandas matplotlib sympy 
-              pyserial laspy
-              websocket_client pyproj ipympl ipywidgets seaborn influxdb
+              pyserial websocket_client pyproj ipympl ipywidgets seaborn influxdb
+              # laspy  # doesn't work
+              svgpathtools
             ];
           }
       );
